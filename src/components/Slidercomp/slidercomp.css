@@ -1,0 +1,96 @@
+.slider_container {
+  height: 100vh;
+}
+.slick-initialized {
+  height: 100%;
+  position: relative;
+}
+.slick-list {
+  height: 100%;
+}
+.slick-arrow {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+}
+.slick-prev {
+  top: 50%;
+  left: 2%;
+}
+.slick-next {
+  top: 50%;
+  right: 2%;
+}
+.slick-dots {
+  position: absolute;
+  bottom: 0px;
+  width: fit-content;
+  height: fit-content;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, 80%);
+  padding: 0;
+  margin: 0;
+}
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: var(--c1);
+}
+.slick-dots li button:before {
+  color: var(--c1);
+}
+.slick-prev:before,
+.slick-next:before {
+  color: var(--c1);
+}
+
+.slick-track,
+.slick-slide,
+.slick-slide > div {
+  height: 100%;
+}
+
+.banner {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+}
+.banner h2 {
+  background: -webkit-linear-gradient(#751fff, black);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.banner1 {
+  background-image: url("../../images/banner1.webp");
+}
+.banner2 {
+  background-image: url("../../images/banner2.avif");
+}
+.banner3 {
+  background-image: url("../../images/banner3.webp");
+}
+.banner4 {
+  background-image: url("../../images/banner4.jpeg");
+}
+.bannerdetails {
+  width: 40%;
+  height: 50% !important;
+  top: 25%;
+  left: 28%;
+  transform: translate(-50%, 10%);
+}
+.salesapn {
+  animation: sale 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes sale {
+  0% {
+    transform: scale(0.9) rotate(45deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
