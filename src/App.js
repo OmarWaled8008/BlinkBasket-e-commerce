@@ -13,6 +13,7 @@ import Notfound from "./pages/Notfound/Notfound";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/authentication";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Productdetails from "./pages/Productdetails/Productdetails";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Products />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "prodectdetails",
+        element: (
+          <ProtectedRoute>
+            <Productdetails />
           </ProtectedRoute>
         ),
       },

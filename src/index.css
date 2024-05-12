@@ -69,3 +69,12 @@ body {
   justify-content: center;
   align-items: center;
 }
+.introsection {
+  height: 60vh;
+  background-image: url('./images/inrosec.jpg');
+  background-size: cover;
+  background-position: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

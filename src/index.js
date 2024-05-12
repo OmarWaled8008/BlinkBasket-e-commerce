@@ -7,7 +7,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "jquery/dist/jquery.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
+import "./images/inrosec.jpg"
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 
