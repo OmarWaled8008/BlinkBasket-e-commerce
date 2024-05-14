@@ -14,6 +14,7 @@
   height: fit-content;
   position: relative;
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .secoundsection__details .secoundsection__img {
   width: 100%;
@@ -109,6 +110,7 @@
   background-position: 100%;
   position: relative;
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .endsection__div {
   background: linear-gradient(

@@ -1,0 +1,11 @@
+.orderscon {
+  width: 80rem;
+  margin: 0 auto;
+}
+.orderdetails {
+  box-shadow: 0 0 0 4px rgb(234 226 183 / 10%);
+  transition: 0.5s;
+}
+.orderdetails:hover {
+  transform: scale(1.05, 1.05);
+}

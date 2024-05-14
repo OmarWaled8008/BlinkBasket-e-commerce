@@ -14,6 +14,11 @@ import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/authentication";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Productdetails from "./pages/Productdetails/Productdetails";
+import { CartProvider } from "./context/cartallapis";
+import Payment from "./pages/Payment/Payment";
+import Orders from "./pages/Orders/Orders";
+import Wishlist from "./pages/Wishlist/Wishlist";
+import WishlistProvider from "./context/wishlistapi";
 
 const router = createBrowserRouter([
   {
@@ -37,10 +42,18 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "prodectdetails",
+        path: "prodectdetails/:id",
         element: (
           <ProtectedRoute>
             <Productdetails />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "Wishlist",
+        element: (
+          <ProtectedRoute>
+            <Wishlist />
           </ProtectedRoute>
         ),
       },
@@ -60,6 +73,22 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "Payment/:cartId",
+        element: (
+          <ProtectedRoute>
+            <Payment />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "allorders",
+        element: (
+          <ProtectedRoute>
+            <Orders />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
   { path: "Signup", element: <Signup /> },
@@ -72,7 +101,11 @@ function App() {
     <>
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
+          <CartProvider>
+            <WishlistProvider>
+              <RouterProvider router={router} />
+            </WishlistProvider>
+          </CartProvider>
         </QueryClientProvider>
       </AuthProvider>
       <Toaster />

@@ -9,7 +9,7 @@ import { TbPasswordUser } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
-import { Bars, Triangle } from "react-loader-spinner";
+import { Bars } from "react-loader-spinner";
 import toast from "react-hot-toast";
 
 export default function Signup() {
@@ -20,8 +20,6 @@ export default function Signup() {
     rePassword: "",
     phone: "",
   };
-  const [success, setSuccess] = useState(null);
-  const [fail, setFail] = useState(null);
   const [loadSpinner, setLoadSpinner] = useState(false);
   const navigate = useNavigate();
   let formikObj = useFormik({
@@ -33,8 +31,6 @@ export default function Signup() {
       }, 4000);
     },
     validate: (values) => {
-      setSuccess(null);
-      setFail(null);
       let errors = {};
       const nameRegex = /^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/;
       const emailRegex =
@@ -76,12 +72,10 @@ export default function Signup() {
       );
       let res = data.message;
       if (res === "success") {
-        setSuccess("You have been logged in successfully");
         toast.success("You have been logged in successfully");
       }
     } catch (error) {
       let errorres = error.response.data.message;
-      setFail(errorres);
       toast.error(errorres);
     }
     setLoadSpinner(false);
@@ -117,7 +111,7 @@ export default function Signup() {
             value={formikObj.values.name}
             name="name"
             type="text"
-            className="input p-1"
+            className="input p-1 w-100"
             placeholder="Enter your Name"
           />
           {!formikObj.touched.name ? (
@@ -145,7 +139,7 @@ export default function Signup() {
             value={formikObj.values.email}
             name="email"
             type="email"
-            className="input p-1"
+            className="input p-1 w-100"
             placeholder="Enter your Email"
           />
           {!formikObj.touched.email ? (
@@ -173,7 +167,7 @@ export default function Signup() {
             value={formikObj.values.phone}
             name="phone"
             type="text"
-            className="input p-1"
+            className="input p-1 w-100"
             placeholder="Enter your Phone"
           />
           {!formikObj.touched.phone ? (
@@ -202,7 +196,7 @@ export default function Signup() {
             value={formikObj.values.password}
             name="password"
             type="password"
-            className="input p-1"
+            className="input p-1 w-100"
             placeholder="Enter your Password"
           />
           {!formikObj.touched.password ? (
@@ -230,7 +224,7 @@ export default function Signup() {
             onChange={formikObj.handleChange}
             value={formikObj.values.rePassword}
             type="password"
-            className="input p-1"
+            className="input p-1 w-100"
             placeholder="Confirm your Password"
           />
           {!formikObj.touched.rePassword ? (

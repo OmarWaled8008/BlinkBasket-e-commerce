@@ -1,0 +1,54 @@
+.productscartcon {
+  width: 80rem;
+  margin: 0 auto;
+}
+.productscarttitle {
+  border-bottom: 1px solid black;
+}
+.productscartform,
+.productscartcheckout {
+  border-top: 1px solid black;
+}
+.cartproductdetails {
+  box-shadow: 0 0 0 4px rgb(234 226 183 / 10%);
+}
+
+.inputgroup {
+  display: flex;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.input {
+  min-height: 50px;
+  width: 200px;
+  padding: 0 1rem;
+  color: #fff;
+  font-size: 15px;
+  border: 1px solid var(--c1);
+  border-radius: 6px 0 0 6px;
+  background-color: transparent;
+}
+
+.buttonsubmit {
+  min-height: 50px;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: var(--c1);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.5s;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.buttonsubmit:hover {
+  background-color: #751fffa9;
+}
+
+.input:focus,
+.input:focus-visible {
+  border-color: var(--c3);
+  outline: none;
+}

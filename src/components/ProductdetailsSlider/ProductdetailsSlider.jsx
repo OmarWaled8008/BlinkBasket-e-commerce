@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 
-export default function ProductDetailsSlider() {
+export default function ProductDetailsSlider({ images }) {
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
   let sliderRef1 = useRef(null);
@@ -11,37 +11,18 @@ export default function ProductDetailsSlider() {
     setNav1(sliderRef1);
     setNav2(sliderRef2);
   }, []);
+
   return (
     <div className="slider-container">
-      <h2>Slider Syncing (AsNavFor)</h2>
-      <h4>First Slider</h4>
       <Slider asNavFor={nav2} ref={(slider) => (sliderRef1 = slider)}>
-        <div>
-          <h3>1</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
-        <div>
-          <h3>2</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
-        <div>
-          <h3>3</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
-        <div>
-          <h3>4</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
-        <div>
-          <h3>5</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
-        <div>
-          <h3>6</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
+        {images?.map((image, idx) => {
+          return (
+            <div key={idx}>
+              <img src={image} className="w-100 rounded-xl" alt="" />
+            </div>
+          );
+        })}
       </Slider>
-      <h4>Second Slider</h4>
       <Slider
         asNavFor={nav1}
         ref={(slider) => (sliderRef2 = slider)}
@@ -49,30 +30,13 @@ export default function ProductDetailsSlider() {
         swipeToSlide={true}
         focusOnSelect={true}
       >
-        <div>
-          <h3>1</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
-        <div>
-          <h3>2</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
-        <div>
-          <h3>3</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
-        <div>
-          <h3>4</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
-        <div>
-          <h3>5</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
-        <div>
-          <h3>6</h3>
-          <img src={require("../../images/logo.jpg")} alt="" />
-        </div>
+        {images?.map((image, idx) => {
+          return (
+            <div key={idx}>
+              <img src={image} className="w-100 rounded-xl" alt="" />
+            </div>
+          );
+        })}
       </Slider>
     </div>
   );

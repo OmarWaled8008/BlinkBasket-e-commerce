@@ -17,8 +17,7 @@ export default function Login() {
     email: "",
     password: "",
   };
-  const [success, setSuccess] = useState(null);
-  const [fail, setFail] = useState(null);
+  
   const [loadSpinner, setLoadSpinner] = useState(false);
   const navigate = useNavigate();
   let formikObj = useFormik({
@@ -27,8 +26,7 @@ export default function Login() {
       logInApi(values);
     },
     validate: (values) => {
-      setSuccess(null);
-      setFail(null);
+      
       let errors = {};
       const emailRegex =
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -54,7 +52,6 @@ export default function Login() {
       localStorage.setItem("tkn", data.token);
       setToken(data.token);
       if (res === "success") {
-        setSuccess("You have been logged in successfully");
         toast.success(data.message);
         setTimeout(() => {
           navigate("/home");
@@ -63,7 +60,6 @@ export default function Login() {
     } catch (error) {
       let errorres = error.response.data.message;
       toast.error(errorres);
-      setFail(errorres);
     }
     setLoadSpinner(false);
   }
@@ -101,7 +97,7 @@ export default function Login() {
             value={formikObj.values.email}
             name="email"
             type="email"
-            className="input p-1"
+            className="input p-1 w-100"
             placeholder="Enter your Email"
           />
           {!formikObj.touched.email ? (
@@ -130,7 +126,7 @@ export default function Login() {
             value={formikObj.values.password}
             name="password"
             type="password"
-            className="input p-1"
+            className="input p-1 w-100"
             placeholder="Enter your Password"
           />
           {!formikObj.touched.password ? (
@@ -141,9 +137,6 @@ export default function Login() {
             <i className="validicon position-absolute fa-solid fa-circle-check"></i>
           )}
         </div>
-
-        {/* {success ? <div className="alert alert-success">{success}</div> : ""}
-        {fail ? <div className="alert alert-danger">{fail}</div> : ""} */}
 
         <button
           type="submit"
@@ -187,4 +180,3 @@ export default function Login() {
     </>
   );
 }
-// hm123@gmail.com

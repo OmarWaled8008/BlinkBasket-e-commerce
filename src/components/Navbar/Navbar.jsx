@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -7,13 +7,19 @@ import { HeartIcon } from "@heroicons/react/24/outline";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { authContext } from "../../context/authentication";
+import { cartContext } from "../../context/cartallapis";
+import { wishlisContext } from "../../context/wishlistapi";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function Navbar() {
   const { token, setToken } = useContext(authContext);
+  const { alltotalCartItems } = useContext(cartContext);
+  const { loveCount } = useContext(wishlisContext);
   const navigate = useNavigate();
+
+  const [toggleCart, seToggleCart] = useState(true);
 
   useEffect(() => {
     const navBar = document.getElementById("navbar");
@@ -38,6 +44,17 @@ export default function Navbar() {
     setToken(null);
     localStorage.clear();
     navigate("/login");
+  }
+
+  function cartSideBarShow() {
+    const cartSideBar = document.getElementById("cartsidebar");
+    if (toggleCart) {
+      cartSideBar.classList.replace("hidecartsidebar", "showcartsidebar");
+      seToggleCart(false);
+    } else {
+      cartSideBar.classList.replace("showcartsidebar", "hidecartsidebar");
+      seToggleCart(true);
+    }
   }
   return (
     <Disclosure
@@ -124,13 +141,9 @@ export default function Navbar() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {token ? (
                   <>
-                    <NavLink
-                      to="/Cart"
-                      className={(navData) =>
-                        navData.isActive
-                          ? "relative rounded-full text-c3 p-1"
-                          : "relative rounded-full text-c1 transition duration-300 hover:text-c3 p-1"
-                      }
+                    <button
+                      onClick={cartSideBarShow}
+                      className="relative rounded-full text-c1 transition duration-300 hover:text-c3 p-1"
                     >
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">View notifications</span>
@@ -139,22 +152,22 @@ export default function Navbar() {
                         aria-hidden="true"
                       />
                       <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        0
+                        {alltotalCartItems || "0"}
                         <span className="visually-hidden">unread messages</span>
                       </span>
-                    </NavLink>
-                    <button
-                      type="button"
+                    </button>
+                    <Link
+                      to="/Wishlist"
                       className="relative rounded-full  p-1 text-c1 hover:text-c3 ml-3"
                     >
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">View notifications</span>
                       <HeartIcon className="h-6 w-6" aria-hidden="true" />
                       <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        0
+                        {loveCount || "0"}
                         <span className="visually-hidden">unread messages</span>
                       </span>
-                    </button>
+                    </Link>
 
                     <Menu as="div" className="relative ml-3">
                       <div>

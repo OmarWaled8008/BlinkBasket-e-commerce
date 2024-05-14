@@ -71,7 +71,7 @@ body {
 }
 .introsection {
   height: 60vh;
-  background-image: url('./images/inrosec.jpg');
+  background-image: url("./images/inrosec.jpg");
   background-size: cover;
   background-position: 100%;
   display: flex;

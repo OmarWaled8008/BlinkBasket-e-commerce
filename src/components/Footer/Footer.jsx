@@ -9,11 +9,11 @@ export default function Footer() {
           <div className={footerCSS.footer_con__content}>
             <div className={footerCSS.footer_con__tittle}>
               <h4>BlinkBasket</h4>
-              <p>roadmaps Platform for students and fresh graduate.</p>
+              <p>prosucts Platform for clothes and fresh food.</p>
             </div>
             <ul className={footerCSS.footer_con__ul}>
               <li>
-                <Link to="roadmaps">Find Roadmaps</Link>
+                <Link to="roadmaps">Find products</Link>
               </li>
               <li>
                 <Link to="aboutus">About Us</Link>
@@ -24,7 +24,7 @@ export default function Footer() {
             </ul>
             <div className={footerCSS.footer_con__email}>
               <p>Email Us As</p>
-              <p>carrerinsight@gmail.com</p>
+              <p>BlinkBasket@gmail.com</p>
             </div>
             <div className={footerCSS.footer_con__social}>
               <p>you can follow us in :</p>
@@ -48,7 +48,7 @@ export default function Footer() {
             </div>
           </div>
           <p className={footerCSS.footer_con__rights}>
-            2023 Career insight. all right reserved
+            2023 BlinkBasket. all right reserved
           </p>
         </div>
       </footer>
